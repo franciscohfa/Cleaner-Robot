@@ -1,49 +1,33 @@
-# 🤖 Aspirador Robô Autónomo
+# Aspirador Robô Autónomo
 
-## 📖 Sobre o Projeto
+## Descrição
 
-Este projeto consiste no desenvolvimento de um aspirador robô autónomo capaz de se deslocar de forma independente, evitar obstáculos e realizar a recolha de pequenos resíduos através de um sistema de sucção integrado.
+Este projeto consiste no desenvolvimento de um aspirador robô autónomo baseado na plataforma Arduino UNO. O sistema foi concebido para se deslocar autonomamente, detetar obstáculos presentes no ambiente e alterar a sua trajetória sempre que necessário, permitindo uma navegação segura em espaços interiores.
 
-O projeto foi desenvolvido no âmbito da Prova de Aptidão Profissional (PAP) do curso de Técnico de Gestão e Programação de Sistemas Informáticos e teve como principal objetivo aplicar conhecimentos de eletrónica, programação, automação e robótica na construção de um protótipo funcional.
+O projeto foi desenvolvido no âmbito da Prova de Aptidão Profissional (PAP) do curso de Técnico de Gestão e Programação de Sistemas Informáticos, tendo como principal objetivo aplicar conhecimentos adquiridos nas áreas da programação, eletrónica e robótica.
 
-Uma das principais características deste projeto é a reutilização de componentes provenientes de um aspirador de mão, permitindo reduzir os custos de implementação e promover a reutilização de equipamentos eletrónicos.
+Uma das características deste projeto é a reutilização de componentes provenientes de um aspirador de mão, permitindo reduzir os custos de implementação e promover o reaproveitamento de equipamentos eletrónicos.
 
----
+## Objetivos
 
-## 🎯 Objetivos
+Os principais objetivos do projeto foram:
 
-Os principais objetivos definidos para o projeto foram:
-
-- Desenvolver um robô com capacidade de navegação autónoma;
+- Desenvolver um sistema robótico autónomo;
 - Implementar um sistema de deteção e desvio de obstáculos;
-- Integrar um sistema de aspiração funcional;
-- Aplicar conhecimentos de programação em Arduino;
-- Desenvolver um sistema de alimentação seguro e eficiente;
+- Integrar um sistema de sucção funcional;
+- Aplicar conhecimentos de programação utilizando Arduino;
+- Desenvolver um sistema de alimentação estável e seguro;
 - Promover a reutilização de componentes eletrónicos.
 
----
+## Funcionamento
 
-## ⚙️ Funcionamento Geral
+O robô desloca-se através de dois motores DC controlados por um Arduino UNO e por um Arduino Motor Shield L293D.
 
-O robô desloca-se autonomamente através de dois motores DC controlados por um Arduino UNO e um Arduino Motor Shield L293D.
+A deteção de obstáculos é realizada por um sensor ultrassónico HC-SR04 montado sobre um servo motor SG90. Quando é detetado um obstáculo, o robô interrompe o movimento e analisa as distâncias disponíveis à direita e à esquerda. Após essa análise, o sistema seleciona automaticamente a direção com maior espaço livre e retoma a navegação.
 
-Durante o movimento, um sensor ultrassónico HC-SR04 monitoriza continuamente a distância aos obstáculos presentes no ambiente.
+Durante todo o funcionamento, o sistema de sucção permanece ativo, permitindo a recolha de pequenos resíduos.
 
-Quando é detetado um obstáculo:
-
-1. O robô interrompe o movimento;
-2. O servo motor orienta o sensor para a direita;
-3. É realizada uma medição da distância disponível;
-4. O sensor é orientado para a esquerda;
-5. É efetuada uma nova medição;
-6. O Arduino compara os valores obtidos;
-7. O robô escolhe automaticamente a direção com maior espaço livre.
-
-Enquanto o sistema de navegação funciona, o sistema de sucção permanece ativo, permitindo a recolha contínua de resíduos.
-
----
-
-## 🧩 Componentes Utilizados
+## Componentes Utilizados
 
 ### Sistema de Controlo
 
@@ -54,116 +38,60 @@ Enquanto o sistema de navegação funciona, o sistema de sucção permanece ativ
 
 ### Sistema de Locomoção
 
-- 2 Motores DC com caixa de engrenagens
-- 2 Rodas motrizes
-- 1 Roda louca
+- Dois motores DC com caixa de engrenagens
+- Duas rodas motrizes
+- Uma roda louca
 
 ### Sistema de Alimentação
 
-- Bateria Li-ion 7,4 V
-- Conversor Buck LM2596
-- Módulo de carregamento 2S
+- Bateria de iões de lítio de 7,4 V
+- Conversor DC-DC LM2596
+- Módulo de carregamento para bateria de 7,4 V
 - Interruptor DPST
 
 ### Sistema de Sucção
 
-- Motor de sucção reutilizado
+- Motor de sucção reutilizado de um aspirador de mão
 - Depósito de resíduos reutilizado
-- Bateria Li-ion 3,7 V reutilizada
-- TP4056
+- Bateria de iões de lítio de 3,7 V
+- Módulo TP4056
 - Filtro de nylon
 - Tubagem em PVC
 
----
+## Alimentação
 
-## 🔋 Alimentação
+O projeto utiliza dois sistemas de alimentação independentes.
 
-O projeto utiliza dois sistemas de alimentação independentes:
+O primeiro sistema utiliza uma bateria de 7,4 V para alimentar o Arduino UNO, o Motor Shield, o sensor ultrassónico e o servo motor.
 
-### Sistema de Navegação
+O segundo sistema utiliza uma bateria de 3,7 V, proveniente de um aspirador de mão, destinada exclusivamente ao motor de sucção.
 
-Responsável por alimentar:
+Ambos os sistemas são controlados através de um único interruptor DPST, permitindo ligar ou desligar todo o robô através de uma única ação.
 
-- Arduino UNO
-- Motor Shield
-- Sensor ultrassónico
-- Servo motor
+## Software
 
-Fonte de alimentação:
-
-- Bateria Li-ion 7,4 V
-
-### Sistema de Sucção
-
-Responsável por alimentar:
-
-- Motor de sucção
-
-Fonte de alimentação:
-
-- Bateria Li-ion 3,7 V
-
-Ambos os sistemas são controlados através de um único interruptor DPST.
-
----
-
-## 💻 Software
-
-O desenvolvimento do software foi realizado utilizando:
-
-- Arduino IDE
-- Linguagem C++
+O software foi desenvolvido utilizando o Arduino IDE e a linguagem de programação C++.
 
 O código implementado permite:
 
-- Leitura do sensor ultrassónico;
-- Controlo do servo motor;
-- Controlo dos motores DC;
-- Deteção e desvio de obstáculos;
-- Navegação autónoma.
+- Ler os valores do sensor ultrassónico;
+- Controlar o servo motor;
+- Controlar os motores de tração;
+- Detetar e evitar obstáculos;
+- Gerir a navegação autónoma do robô.
 
----
+## Estrutura Física
 
-## 🏗️ Estrutura Física
+A estrutura do robô foi construída em PVC devido à sua resistência, baixo peso e facilidade de trabalho.
 
-A estrutura do robô foi construída utilizando PVC devido à sua resistência, baixo peso e facilidade de trabalho.
+Características principais:
 
-### Características principais
+- Diâmetro da base: 26 cm;
+- Espessura da base: 5 mm;
+- Altura total aproximada: 19 cm.
 
-- Diâmetro da base: 26 cm
-- Espessura da base: 5 mm
-- Altura total: aproximadamente 19 cm
+## Autor
 
----
-
-## ♻️ Sustentabilidade
-
-Um dos aspetos mais relevantes do projeto foi a reutilização de componentes provenientes de um aspirador de mão.
-
-Foram reaproveitados:
-
-- Motor de sucção;
-- Depósito de resíduos;
-- Bateria de 3,7 V.
-
-Esta abordagem permitiu reduzir os custos de implementação e diminuir o desperdício de componentes eletrónicos.
-
----
-
-## 📸 Protótipo Final
-
-O resultado final consiste num aspirador robô autónomo capaz de navegar em ambientes interiores, evitar obstáculos e recolher pequenos resíduos de forma automática.
-
----
-
-## 👨‍🎓 Autor
-
-**Francisco**
+Francisco
 
 Projeto desenvolvido no âmbito da Prova de Aptidão Profissional (PAP).
-
----
-
-## 📄 Licença
-
-Este projeto foi desenvolvido exclusivamente para fins educativos e académicos.
